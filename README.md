@@ -8,3 +8,6 @@ Nothing else.
 2. In the root folder, activate the virtual environment and install the dependencies.  
 3. In the django folder, run the server.
 
+# Project Structure
+
+Check avneets repo to see how she created the structure

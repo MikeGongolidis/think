@@ -23,6 +23,16 @@ class HomeView(LoginRequiredMixin,TemplateView):
     success_url = ''
     
     def get_random_question(self,username):
+        """
+        Goal: Get randomly one question that the user has not answered 
+        Logic: 
+            1. Get all the question ids
+            2. Get our user
+            3. Get all the answers of a specific user
+            4. Find the questions that the users have not answered by comparing the question ids with 1
+            5. If there are unanswered questions, pick one randomly and return it.
+            6. Otherwise return a message that the user has no other questions left.
+        """
         questions = Question.objects.all()
         questions2 = Question.objects.all().values('question_id')
         user = User.objects.get(username=username)

@@ -22,6 +22,6 @@ class Question(models.Model):
 
 class Answer(models.Model):
     answer_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User,null=False, on_delete=models.CASCADE, related_name='+')
-    question_id = models.ForeignKey(Question, null=False, on_delete=models.CASCADE, related_name='+')
+    user = models.ForeignKey(User,null=False, on_delete=models.CASCADE, related_name='answer')
+    question_id = models.ForeignKey(Question, null=False, on_delete=models.CASCADE, related_name='question')
     answer_text = models.CharField(max_length=300)
