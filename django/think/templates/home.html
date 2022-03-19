@@ -1,0 +1,28 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+Hi {{ user.username }}!
+{% if form_success %}
+<p>Your answer has been stored!</p>
+{% endif %}
+
+{% if qq.question_text != 'empty' %}
+<p>{{qq.question_text}}</p>
+
+    <form method="post"> {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" value="{{ qq.question_id }}" name="question_id">
+        <input type="submit" value="Save">
+    </form>
+<p><a href="{% url 'home' %}">Other Question</a></p>
+{% else %}
+    <p>You are out of questions! Thank you for answering all of them! <br> You will be able to explore other people`s thoughts later...</p>
+{% endif %}
+
+<p><a href="{% url 'logout' %}">Log Out</a></p>
+
+{% endblock %}

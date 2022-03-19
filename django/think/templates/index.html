@@ -1,0 +1,36 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}Index - Login or Sing up{% endblock %}
+
+{% block content %}
+<p>
+    <h2>Log In</h2>
+    {% if message %}
+    <h3>{{message}}</h3> 
+    {% endif %}
+    <form method="post">
+    {% csrf_token %}
+    {{ form_login.as_p }}
+    <input type="hidden" value="login" name="form_type"> 
+    <button type="submit" value="login">Log In</button>
+    </form>
+</p>
+{%if message == 'Successfully created user'%}
+
+{%else%}
+<p>
+    <h2>Sign Up</h2>
+    {% if message %}
+    <h3>{{message}}</h3> 
+    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form_signup.as_p }}
+      <input type="hidden" value="signup" name="form_type">
+      <button type="submit" value="signup">Sign Up</button>
+    </form>
+</p>
+{%endif%}
+
+{% endblock %}

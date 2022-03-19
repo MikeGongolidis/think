@@ -1,0 +1,4 @@
+id,username,question_id,answer
+1,mike,1,"really far away"
+2,ile,1,"closer than you think"
+3,ile,2,"to rest"
